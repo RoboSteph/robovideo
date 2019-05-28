@@ -1,7 +1,7 @@
 #Stephanie Simpler
 #5-25-2019
 #Getting video info from Twitch
-#note - currently only showing 20 videos in the list
+#note - First request gets 20 most recent videos from the list, next request picks up where that left off 
 
 
 import requests
@@ -26,7 +26,7 @@ def print_list():
     	print(x["duration"])
     	print("-------------------------------------------------------------")
     	count +=1
-    print(count)
+    print("Count for this page: " + count)
 
     return page
 

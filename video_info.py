@@ -1,7 +1,8 @@
 #Stephanie Simpler
 #5-25-2019
 #Getting video info from Twitch
-#note - First request gets 20 most recent videos from the list, next request picks up where that left off 
+#note - First request gets 20 most recent videos from the list, next request picks up where that left off
+#TODO - pull user and client id from file   
 
 
 import requests

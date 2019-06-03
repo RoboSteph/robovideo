@@ -25,18 +25,58 @@ class ExportVideo():
     def export_video(self):
         self.browser.get("https://www.twitch.tv/robosteph/manager")
         time.sleep(3)
-        #selecting by page position? Chose third down to avoid breaking affiliate 24hr rules
-        menu_button = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[3]/div/div[1]/a/div/div")
-        menu_button.click()
 
-        #date for this vid - Needs to be tested, was getting captcha
-        #//*[@id="root"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[3]/div/div[1]/a/div/div/div[2]/div/div/div/div[1]
-        date = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[3]/div/div[1]/a/div/div/div[2]/div/div/div/div[1]").getText()
-        print("Date: " + date)
+        #NEEDS TO BE TESTED
+        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        time.sleep(3)
+
+        # e_date = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[3]/div/div[1]/a/div/div/div[2]/div/div/div/div[1]")
+        # date = e_date.text
+        e_test_date = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[31]/div/div[1]/a/div/div/div[2]/div/div/div/div[1]")
+        test_date = e_test_date.text
+
+        # e_title = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[3]/div/div[1]/a/div/div/div[2]/div/h5")
+        # title = e_tite.text
+
+
+        # print("Date: " + date)
+        # print("Title: " + title)
+
+        time.sleep(3)
+
+        #selecting by page position? Chose third down to avoid breaking affiliate 24hr rules
+        # menu_button = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[3]/div/div[1]/a/div/div")
+        # menu_button.click()
+        test_menu = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[1]/div/div/div[5]/div[31]/div/div[1]/a/div/div")
+        test_menu.click()
+
+        time.sleep(3)
+
+        export_button = self.browser.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div/div/div[1]/div/div/div/div[3]/button/div/div[2]")
+        export_button.click()
+
+        time.sleep(3)
+
+        #NEEDS TO BE TESTED
+        video_description_box = self.browser.find_element_by_xpath("//*[@id=\"ye-description\"]")
+        video_description_box.send_keys(test_date)
+
+        start_export_button = self.browser.find_element_by_xpath("/html/body/div[2]/div/div/div/div[7]/div[2]/button/div/div")
+        start_export_button.click()
+
+        time.sleep(3)
+
+        #NEEDS TO BE TESTED
+    def sign_out(self):
+        avatar_menu = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[1]/nav/div/div[3]/div[5]/div/div/div/div[1]/button/figure/div[1]/img")
+        avatar_menu.click()
+
+        log_out_button = self.browser.find_element_by_xpath("//*[@id=\"root\"]/div/div[2]/div[1]/nav/div/div[3]/div[5]/div/div/div/div[2]/div/div[2]/div/div/div/div/div/div[3]/div/div/div[5]/button/div/div[2]")
+        log_out_button.click()
 
     # def close_browser
     # def exit
-
 
 
 f = open("user.config", "r")
